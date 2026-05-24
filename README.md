@@ -61,4 +61,5 @@ endmodule
 
 
 **RESULTS**
+
 Thus the Serial-In Serial-Out shift register is implemented and verified.
