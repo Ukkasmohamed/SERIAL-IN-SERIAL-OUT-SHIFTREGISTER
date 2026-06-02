@@ -38,26 +38,31 @@ Each D flip-flop in the circuit has a Data (D) input, a Clock (CLK) input, and a
 Developed by: Mohamed Ukkas R
 RegisterNumber: 212225040245
 
-module serial_in_out(clk,sin,q);
-input clk,sin;
-output [3:0]q;
-reg [3:0]q;
-always@(posedge clk)
+module siso(clk,clear,si,so);
+input clk,si,clear;
+output so;
+reg so;
+reg [3:0] tmp;
+always @(posedge clk )
 begin
-q[0]<=sin;
-q[1]=q[0];
-q[2]=q[1];
-q[3]=q[2];
+if (clear)
+tmp <= 4'b0000;
+else
+tmp <= tmp << 1;
+tmp[0] <= si;
+so = tmp[3];
 end
 endmodule
 ```
 */
 
 **RTL LOGIC FOR SISO Shift Register**
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2313e8ac-d196-4c78-bb8e-a4f9d4b760e8" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebf8909c-6588-4e29-aaef-a5372f132dc9" />
+
 
 **TIMING DIGRAMS FOR SISO Shift Register**
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c9f5ab27-2f7c-47ee-9486-02e9762647c6" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5a61a7a9-fcf8-461c-9b24-d300fcb6945b" />
+
 
 
 **RESULTS**
